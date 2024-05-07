@@ -1,0 +1,218 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$app-task-manager-primary: mat.define-palette(mat.$indigo-palette);
+$app-task-manager-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$app-task-manager-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$app-task-manager-theme: mat.define-light-theme((
+  color: (
+    primary: $app-task-manager-primary,
+    accent: $app-task-manager-accent,
+    warn: $app-task-manager-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($app-task-manager-theme);
+
+/* You can add global styles to this file, and also import other style files */
+*, *:before, *:after {
+  box-sizing: border-box;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  color: #212529;
+}
+
+.text-center {
+  text-align: center;
+}
+.d-flex {
+  display: flex;
+}
+.justify-content-center {
+  justify-content: center;
+}
+
+.btn {
+  height: 38px;
+  padding: 6px 12px;
+  margin: 4px 2px;
+  border: 1px solid;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  display: inline-block;
+  border-radius: 6px;
+  background: #fff;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+  &-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+
+    &:hover {
+      color: #fff;
+      background: #6c757d;
+    }
+  }
+
+  &-outline-primary {
+    color: #0d6efd;
+    border-color: #0d6efd;
+
+    &:hover {
+      color: #fff;
+      background: #0d6efd;
+    }
+  }
+}
+
+.btn-link {
+  border-color: transparent;
+  background: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  &:focus-visible {
+    border: none;
+    outline: none;
+  }
+
+  .btn-ico {
+    margin-right: 0.25rem;
+  }
+
+  &-secondary {
+    color: #6c757d;
+  }
+
+  &-primary {
+    color: #2E3F7F;
+  }
+
+  &-danger {
+    color: #dc3545;
+  }
+}
+
+.btn-ico {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1.3rem;
+  height: 1.3rem;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.btn-close {
+  padding: 1rem;
+  margin: -0.5rem;
+  background: center url("assets/icons/close.svg") no-repeat;
+  cursor: pointer;
+  width: 1em;
+  height: 1em;
+  opacity: 0.5;
+  border: none;
+
+  &:hover {
+    opacity: 0.75;
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.btn-group {
+  display: flex;
+
+  &-end {
+    justify-content: flex-end;
+  }
+
+  .btn {
+    margin: 0 0.5rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.mat-mdc-dialog-container .mat-mdc-dialog-content  {
+  color: #212529 !important;
+  padding: 1rem !important;
+  letter-spacing: 0 !important;
+}
+
+.modal-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  padding: 1rem;
+  justify-content: space-between;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modal-title {
+  font-size: 1.25rem !important;
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.875rem;
+}
+
+.mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
+  display: none;
+}
+.mdc-text-field--no-label .mat-mdc-form-field-infix {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  min-height: 48px;
+}
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  margin-right: 4px;
+}
+
+.mat-mdc-icon-button svg {
+  width: 22px;
+  height: 22px;
+}

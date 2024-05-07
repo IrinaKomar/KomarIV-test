@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <div class="btn-group">
+    <button type="button"
+            class="btn btn-link btn-link-danger"
+            title="Удалить"
+            (click)="onNoClick()">
+      <span class="btn-ico">
+        <img src="assets/icons/delete.svg" alt="Удалить" />
+      </span>
+
+      Удалить
+    </button>
+
+    <button *ngIf="!editShow"
+            type="button"
+            class="btn btn-link btn-link-secondary"
+            title="Редактировать"
+            (click)=edit()>
+      <span class="btn-ico">
+        <img src="assets/icons/edit.svg" alt="Редактировать" />
+      </span>
+
+      Редактировать
+    </button>
+  </div>
+
+  <button class="btn-close"
+          [mat-dialog-close]="">
+  </button>
+</div>
+
+<mat-dialog-content *ngIf="data">
+  <div *ngIf="editShow"
+       class = 'edit-task-detail'>
+    <app-add-task [data] = 'data'
+                  [(editShow)] = 'editShow'>
+    </app-add-task>
+  </div>
+
+  <div class="task-detail">
+    <header class="task-header">
+      <h3 class="task-title">{{ data.title }}</h3>
+
+      <span class="task-date">{{ data.date }}</span>
+    </header>
+
+    <div class="task-description">
+      <p>{{ data.description }}</p>
+    </div>
+  </div>
+</mat-dialog-content>
+

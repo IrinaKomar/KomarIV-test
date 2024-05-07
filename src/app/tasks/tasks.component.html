@@ -1,0 +1,31 @@
+<div class="task-container">
+  <div cdkDropList
+       class="task-list"
+       (cdkDropListDropped)="drop($event)">
+    <app-task-detail
+      *ngFor=" let task of tasks"
+      [task]="task"
+      (deleteTask)="delete($event)"
+      class="task-item-box" cdkDrag>
+      <div
+        class="drop-custom-placeholder"
+        *cdkDragPlaceholder>
+      </div>
+    </app-task-detail>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <button type="button"
+            class="btn btn-link btn-link-primary"
+            title="Новая задача"
+            (click)="openDialog()">
+      <span class="btn-ico">
+        <img src="../../assets/icons/add.svg" alt="Новая задача" />
+      </span>
+
+      <span>Новая задача</span>
+    </button>
+  </div>
+</div>
+
+

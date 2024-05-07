@@ -1,0 +1,46 @@
+<section>
+  <form (submit)="submitApplication(description.value, title.value, date.value, $event)">
+    <div class="form-group">
+      <label class="form-label" for="title">Название задачи</label>
+
+      <input class="form-control" type="text" #title id="title" [value]="data?.title">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="title">Дата окончания</label>
+
+      <mat-form-field>
+        <input matInput
+               #date id="date"
+               [formControl]="dateTask"
+               placeholder="dd/mm/yyyy"
+               [matDatepicker]="dp">
+
+        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+
+        <mat-datepicker #dp></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="title">Описание задачи</label>
+
+      <textarea class="form-control" #description [value]="data?.description"></textarea>
+    </div>
+
+    <div class="btn-group btn-group-end">
+      <button type="button"
+              class="btn btn-outline-secondary"
+              title="Отменить"
+              (click)="cancel()">
+        Отменить
+      </button>
+
+      <button type="submit"
+              class="btn btn-outline-primary"
+              title="Сохранить">
+        Сохранить
+      </button>
+    </div>
+  </form>
+</section>
